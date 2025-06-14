@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from chaiaurdjango import views
+from firstPageDjango import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -8,3 +8,4 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
 ]
+

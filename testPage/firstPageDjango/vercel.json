@@ -2,9 +2,19 @@
   "version": 2,
   "builds": [
     {
+      "src": "theme/static_src/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "../static/css/dist"
+      }
+    },
+    {
       "src": "firstPageDjango/wsgi.py",
       "use": "@vercel/python",
-      "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
+      "config": { 
+        "maxLambdaSize": "15mb", 
+        "runtime": "python3.9" 
+      }
     },
     {
       "src": "static/**",
@@ -20,5 +30,8 @@
       "src": "/(.*)",
       "dest": "firstPageDjango/wsgi.py"
     }
-  ]
+  ],
+  "env": {
+    "DJANGO_SETTINGS_MODULE": "firstPageDjango.settings"
+  }
 }

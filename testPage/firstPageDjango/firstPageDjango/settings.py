@@ -10,22 +10,25 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Environment detection
+IS_PRODUCTION = os.getenv('VERCEL_ENV') == 'production' or os.getenv('DJANGO_ENV') == 'production'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-rdut)-*ge$3)d)el8-xe!9z5q@yyk!&vmf6(tds+k+v9_n&+@e'
+SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-rdut)-*ge$3)d)el8-xe!9z5q@yyk!&vmf6(tds+k+v9_n&+@e')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = not IS_PRODUCTION
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.vercel.app']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.vercel.app', '*.vercel.app']
 
 
 # Application definition
@@ -119,6 +122,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
+    BASE_DIR / 'theme' / 'static',
 ]
 
 # Static files collection for production

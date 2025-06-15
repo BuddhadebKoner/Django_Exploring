@@ -1,2 +1,10 @@
+python -m venv <environment_name>
 source .venv/bin/activate
+pip install Django
+django-admin startproject my_website
+
+(.venv) buddhadebkoner@bk:~/Desktop/CODING/Django_Exploring/jinjaTesting$ l
+jinjaTesting/
+(.venv) buddhadebkoner@bk:~/Desktop/CODING/Django_Exploring/jinjaTesting$ 
+
 python3 manage.py runserver

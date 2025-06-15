@@ -1,0 +1,4 @@
+python manage.py startapp smallApp
+
+how to get emmet in html file django
+----- screenshort here ----------
